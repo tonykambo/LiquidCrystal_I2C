@@ -52,13 +52,13 @@ LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_Addr,uint8_t lcd_cols,uint8_t l
   _backlightval = LCD_NOBACKLIGHT;
 }
 
-void LiquidCrystal_I2C::init(){
-	init_priv();
+void LiquidCrystal_I2C::init(uint8_t SDA_PORT, uint8_t SCL_PORT){
+	init_priv(SDA_PORT, SCL_PORT);
 }
 
-void LiquidCrystal_I2C::init_priv()
+void LiquidCrystal_I2C::init_priv(uint8_t SDA_PORT, uint8_t SCL_PORT)
 {
-	Wire.begin(2,14);
+	Wire.begin(SDA_PORT,SCL_PORT);
 	_displayfunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;
 	begin(_cols, _rows);
 }
